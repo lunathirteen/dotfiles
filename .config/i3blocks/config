@@ -1,0 +1,37 @@
+command=~/.config/i3blocks/$BLOCK_NAME
+separator_block_width=10
+markup=pango
+# cpu_temperature cpu_use wifi pulseaudio battery clock
+
+#[editor_open]
+#interval=once
+
+[cpu_temperature]
+interval=5
+
+[cpu_usage]
+command=echo "<span bgcolor='#00cec9' color='#f3f3f3'> CPU: `top -bn1 | grep 'Cpu(s)' | sed 's/.*, *\([0-9.]*\)%* id.*/\1/' | awk '{print 100 - $1}'`% </span>"
+interval=5
+
+[memory_usage]
+interval=5
+command=echo "<span bgcolor='#d63031' color='#f3f3f3'> RAM:`free -t -m -h | grep Mem | awk '{print $3"/"$2}' | sed -e 's:Gi:G:g'` </span>"
+
+[wifi]
+interval=10
+
+[volume]
+interval=once
+signal=10
+
+[clock]
+interval=5
+command=echo "<span color='#f3f3f3' bgcolor='#e17055'> `date +%d-%m-%Y' '%R:%S` </span>"
+
+[powerbuttons]
+interval=once
+
+#[fill]
+#fulltext=' '
+#interval=once
+#command=echo ''
